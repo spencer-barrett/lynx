@@ -133,6 +133,11 @@ input:focus {
   text-overflow: ellipsis;
 }
 
+.key-logo {
+  height: 16px;
+  width: 16px;
+}
+
 .link .copied {
   flex: none;
   font-size: 11px;

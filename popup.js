@@ -1,5 +1,5 @@
 const SUGGESTED = [
-  { label: "LinkedIn", value: "https://www.linkedin.com/in/" },
+  { label: "LinkedIn", value: "https://www.linkedin.com/in/", icon: "./icons/linked-in.svg" },
   { label: "GitHub", value: "https://github.com/" },
   { label: "Portfolio", value: "https://" },
   { label: "X", value: "https://x.com/" },
@@ -73,12 +73,13 @@ function render() {
 }
 
 function viewRow(link, i) {
+  const isLinkedIn = /linkedin/i.test(link.label + " " + link.value);
   const li = document.createElement("li");
   li.className = "link";
   li.tabIndex = 0;
   li.title = `Copy ${link.value}`;
   li.innerHTML = `
-    <span class="key">${i < 9 ? i + 1 : ""}</span>
+    <span class="key">${isLinkedIn ? '<img class="key-logo" src="./icons/linked-in.svg"/> ': "sd"}</span>
     <span class="text">
       <div class="label"></div>
       <div class="value"></div>
