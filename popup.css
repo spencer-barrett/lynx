@@ -1,0 +1,283 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --line: #e6e6e6;
+  --hover: #f4f4f4;
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --danger: #c0392b;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1e;
+    --fg: #ececec;
+    --muted: #9a9a9a;
+    --line: #333336;
+    --hover: #2a2a2d;
+    --accent: #4f8bff;
+    --danger: #ff6b5b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Keep the hidden attribute working on elements that set their own display. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  width: 340px;
+  margin: 0;
+  padding: 12px;
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+button {
+  font: inherit;
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  cursor: pointer;
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--muted);
+}
+
+button.ghost:hover {
+  background: var(--hover);
+  color: var(--fg);
+}
+
+input {
+  font: inherit;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+#links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.link:hover,
+.link:focus-visible {
+  background: var(--hover);
+  outline: none;
+}
+
+.link .key {
+  flex: none;
+  width: 18px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.link .text {
+  flex: 1;
+  min-width: 0;
+}
+
+.link .label {
+  font-weight: 600;
+}
+
+.link .value {
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link .copied {
+  flex: none;
+  font-size: 11px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.link.flash .copied {
+  opacity: 1;
+}
+
+/* edit mode */
+body.editing .link {
+  cursor: default;
+}
+
+body.editing .link:hover {
+  background: none;
+}
+
+.link .fields {
+  flex: 1;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.link .actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.link .actions button {
+  padding: 2px 6px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.link .actions .delete {
+  color: var(--danger);
+}
+
+#bulk {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+button.secondary {
+  background: var(--hover);
+  color: var(--fg);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+#board-prompt {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+#board-prompt p {
+  margin: 0 0 8px;
+}
+
+button.link-button {
+  display: block;
+  margin-top: 4px;
+  padding: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 11px;
+}
+
+button.link-button:hover {
+  text-decoration: underline;
+}
+
+#add-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+#add-form button {
+  justify-self: end;
+}
+
+#suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+#suggestions button {
+  background: var(--hover);
+  color: var(--fg);
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+#empty {
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+footer {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+kbd {
+  font: inherit;
+  padding: 0 3px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+#toast.show {
+  opacity: 1;
+}

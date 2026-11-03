@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "Lynx",
+  "version": "0.1.0",
+  "description": "Keep your social and portfolio links one click away for job applications and other forms.",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "https://*.greenhouse.io/*",
+    "https://*.lever.co/*",
+    "https://*.ashbyhq.com/*",
+    "https://*.myworkdayjobs.com/*",
+    "https://*.smartrecruiters.com/*",
+    "https://*.workable.com/*",
+    "https://*.jobvite.com/*",
+    "https://*.icims.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Lynx",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "scripts": [
+      "fill.js",
+      "background.js"
+    ]
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+L"
+      },
+      "description": "Open Lynx"
+    },
+    "fill-form": {
+      "suggested_key": {
+        "default": "Alt+Shift+F"
+      },
+      "description": "Fill link fields on this page"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "lynx@spencer-barrett",
+      "strict_min_version": "121.0"
+    }
+  }
+}

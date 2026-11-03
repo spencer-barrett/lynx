@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lynx</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Lynx</h1>
+      <button id="toggle-edit" class="ghost" type="button">Edit</button>
+    </header>
+
+    <ul id="links" aria-label="Saved links"></ul>
+
+    <div id="bulk" hidden>
+      <button id="fill" type="button" title="Fill matching fields on this page (Alt+Shift+F)">Fill this form</button>
+      <button id="copy-all" class="secondary" type="button">Copy all</button>
+    </div>
+
+    <div id="board-prompt" hidden>
+      <p>
+        <span id="board-reason"></span> Lynx can fill it if you allow access
+        to job-board sites (Greenhouse, Lever, Ashby, Workday and a few
+        others). It still only acts when you ask.
+      </p>
+      <button id="board-allow" type="button">Allow job boards</button>
+    </div>
+
+    <p id="empty" hidden>
+      No links yet. Add your LinkedIn, GitHub, portfolio, or anything else you
+      paste into forms often.
+    </p>
+
+    <form id="add-form" autocomplete="off">
+      <input id="add-label" placeholder="Label (e.g. LinkedIn)" maxlength="40" />
+      <input id="add-value" placeholder="https://… or any text" required />
+      <button type="submit">Add</button>
+    </form>
+
+    <div id="suggestions" hidden></div>
+
+    <footer>
+      Click to copy · <kbd>1</kbd>–<kbd>9</kbd> · <kbd>Alt+Shift+F</kbd> fills
+      the form · right-click a field to insert
+      <button id="board-link" class="link-button" type="button" hidden>
+        Fill forms embedded from job boards…
+      </button>
+    </footer>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="fill.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
