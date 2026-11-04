@@ -12,6 +12,8 @@ const ICONS = {
   "x.com": { light: "icons/x-logo.svg" },
   "twitter.com": { light: "icons/x-logo.svg" },
 };
+const EMAIL_ICON = { light: "icons/mail.svg" };
+const PHONE_ICON = { light: "icons/phone.svg" };
 
 const $ = (sel) => document.querySelector(sel);
 const listEl = $("#links");
@@ -39,11 +41,16 @@ function save() {
   return chrome.storage.sync.set({ links });
 }
 
-const EMAIL_ICON = { light: "icons/mail.svg" };
 const isEmail = (v) => /^(mailto:)?[^@\s]+@[^@\s]+\.[^@\s]+$/i.test(v);
+const isPhone = (v) => {
+  const s = v.trim().replace(/^tel:/i, "");
+  const digits = s.replace(/\D/g, "").length;
+  return /^\+?[\d\s().-]+$/.test(s) && digits >= 7 && digits <= 15;
+};
 
 function iconFor(link) {
   if (isEmail(link.value)) return EMAIL_ICON;
+  if(isPhone(link.value)) return PHONE_ICON;
   let host;
   try {
     const url = new URL(link.value);
