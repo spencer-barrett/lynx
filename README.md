@@ -51,4 +51,19 @@ Lynx never runs on a page in the background and doesn't request access to any si
 - `popup.html` / `popup.css` / `popup.js`: the toolbar popup
 - `fill.js`: form-field matching, shared by the popup and background script
 - `background.js`: the right-click menu, the fill shortcut, and field insertion
-- `icons/`: toolbar icons
+- `icons/`: the extension's icons and the logos shown next to each link (see Credits)
+
+## Credits
+
+**Icons**
+
+- Email and phone icons: [Lucide](https://lucide.dev), [ISC License](https://lucide.dev/license). Copyright (c) Lucide Contributors 2022; portions copyright (c) Cole Bemis 2013–2022 as part of Feather (MIT).
+- X icon by [Icons8](https://icons8.com).
+- Portfolio icon and the Lynx extension icons were made for this project.
+
+**Trademarks**
+
+LinkedIn, GitHub, and X logos are trademarks of their respective owners and are used only to label links to those sites. Lynx isn't affiliated with or endorsed by LinkedIn, GitHub, or X.
+
+- LinkedIn "In" logo: [LinkedIn brand guidelines](https://brand.linkedin.com/downloads)
+- GitHub Invertocat logo: [GitHub logos and usage](https://github.com/logos)
