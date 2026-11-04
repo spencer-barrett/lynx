@@ -7,22 +7,32 @@
   </head>
   <body>
     <header>
-      <h1>Lynx</h1>
+      <div class="header-container">
+        <img src="icons/icon16.png" />
+        <h1>Lynx</h1>
+      </div>
+
       <button id="toggle-edit" class="ghost" type="button">Edit</button>
     </header>
 
     <ul id="links" aria-label="Saved links"></ul>
 
     <div id="bulk" hidden>
-      <button id="fill" type="button" title="Fill matching fields on this page (Alt+Shift+F)">Fill this form</button>
+      <button
+        id="fill"
+        type="button"
+        title="Fill matching fields on this page (Alt+Shift+F)"
+      >
+        Fill this form
+      </button>
       <button id="copy-all" class="secondary" type="button">Copy all</button>
     </div>
 
     <div id="board-prompt" hidden>
       <p>
-        <span id="board-reason"></span> Lynx can fill it if you allow access
-        to job-board sites (Greenhouse, Lever, Ashby, Workday and a few
-        others). It still only acts when you ask.
+        <span id="board-reason"></span> Lynx can fill it if you allow access to
+        job-board sites (Greenhouse, Lever, Ashby, Workday and a few others). It
+        still only acts when you ask.
       </p>
       <button id="board-allow" type="button">Allow job boards</button>
     </div>
@@ -33,7 +43,11 @@
     </p>
 
     <form id="add-form" autocomplete="off">
-      <input id="add-label" placeholder="Label (e.g. LinkedIn)" maxlength="40" />
+      <input
+        id="add-label"
+        placeholder="Label (e.g. LinkedIn)"
+        maxlength="40"
+      />
       <input id="add-value" placeholder="https://… or any text" required />
       <button type="submit">Add</button>
     </form>
@@ -41,8 +55,8 @@
     <div id="suggestions" hidden></div>
 
     <footer>
-      Click to copy · <kbd>Alt+Shift+F</kbd> fills
-      the form · right-click a field to insert
+      Click to copy · <kbd>Alt+Shift+F</kbd> fills the form · right-click a
+      field to insert
       <button id="board-link" class="link-button" type="button" hidden>
         Fill forms embedded from job boards…
       </button>

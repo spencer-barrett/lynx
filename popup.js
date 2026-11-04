@@ -1,10 +1,17 @@
 const SUGGESTED = [
-  { label: "LinkedIn", value: "https://www.linkedin.com/in/", icon: "./icons/linked-in.svg" },
+  { label: "LinkedIn", value: "https://www.linkedin.com/in/" },
   { label: "GitHub", value: "https://github.com/" },
   { label: "Portfolio", value: "https://" },
   { label: "X", value: "https://x.com/" },
   { label: "Email", value: "" },
 ];
+
+const ICONS = {
+  "linkedin.com": { light: "icons/LI-In-Bug.png", dark: "icons/InBug-White.png" },
+  "github.com": { light: "icons/GitHub_Invertocat_Black.svg", dark: "icons/GitHub_Invertocat_White.svg" },
+  "x.com": { light: "icons/x-logo.svg" },
+  "twitter.com": { light: "icons/x-logo.svg" },
+};
 
 const $ = (sel) => document.querySelector(sel);
 const listEl = $("#links");
@@ -32,6 +39,21 @@ function save() {
   return chrome.storage.sync.set({ links });
 }
 
+const EMAIL_ICON = { light: "icons/mail.svg" };
+const isEmail = (v) => /^(mailto:)?[^@\s]+@[^@\s]+\.[^@\s]+$/i.test(v);
+
+function iconFor(link) {
+  if (isEmail(link.value)) return EMAIL_ICON;
+  let host;
+  try {
+    const url = new URL(link.value);
+    if (!url.protocol.startsWith("http")) return null; // tel:, etc.
+    host = url.hostname.replace(/^www\./, "");
+  } catch {
+    return null; // plain text, phone numbers…
+  }
+  return ICONS[host] ?? { light: "icons/portfolio.svg" };
+}
 // Typing in edit mode saves shortly after each pause, so closing the popup
 // mid-edit doesn't lose anything. (storage.sync limits writes per minute,
 // so it can't save on every keystroke.)
@@ -73,13 +95,19 @@ function render() {
 }
 
 function viewRow(link, i) {
-  const isLinkedIn = /linkedin/i.test(link.label + " " + link.value);
+  const icon = iconFor(link);
+  const iconHtml = icon
+    ? `<picture>
+       ${icon.dark ? `<source srcset="${icon.dark}" media="(prefers-color-scheme: dark)">` : ""}
+       <img class="key-logo" src="${icon.light}" alt="">
+     </picture>`
+    : "";
   const li = document.createElement("li");
   li.className = "link";
   li.tabIndex = 0;
   li.title = `Copy ${link.value}`;
   li.innerHTML = `
-    <span class="key">${isLinkedIn ? '<img class="key-logo" src="./icons/linked-in.svg"/> ': "sd"}</span>
+    <span class="key">${iconHtml || (i < 9 ? i + 1 : "")}</span>
     <span class="text">
       <div class="label"></div>
       <div class="value"></div>
