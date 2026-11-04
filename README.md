@@ -6,6 +6,12 @@ A small browser extension that keeps your LinkedIn, GitHub, portfolio, and other
 
 ![Lynx filling a job application: Alt+Shift+F fills email and phone, Fill this form adds LinkedIn, portfolio, and GitHub, and clicking a saved project link copies it to paste into a question Lynx can't fill](docs/demo.webp)
 
+<p align="center">
+  <img src="docs/popup-light.png" width="340" alt="The Lynx popup in light mode, listing LinkedIn, GitHub, portfolio, email, phone, and a featured project link, each with its icon">
+  <img src="docs/popup-dark.png" width="340" alt="The Lynx popup in dark mode, with the same links">
+</p>
+<p align="center"><sub>Lynx follows your system's light or dark mode.</sub></p>
+
 ## How to use it
 
 - **Fill the form:** on an application page, press `Alt+Shift+F` (or click **Fill this form** in the popup). Lynx finds the LinkedIn, GitHub, portfolio, email, and similar fields and fills the empty ones. Each filled field glows briefly so you can check it. Fields that already have something in them are left alone.
@@ -53,7 +59,7 @@ Lynx never runs on a page in the background and doesn't request access to any si
 - `popup.html` / `popup.css` / `popup.js`: the toolbar popup
 - `fill.js`: form-field matching, shared by the popup and background script
 - `background.js`: the right-click menu, the fill shortcut, and field insertion
-- `docs/demo.webp`: the demo above
+- `docs/`: the demo and screenshots above
 - `icons/`: the extension's icons and the logos shown next to each link (see Credits)
 
 ## Credits
