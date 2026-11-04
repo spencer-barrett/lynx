@@ -50,7 +50,7 @@ const isPhone = (v) => {
 
 function iconFor(link) {
   if (isEmail(link.value)) return EMAIL_ICON;
-  if(isPhone(link.value)) return PHONE_ICON;
+  if (isPhone(link.value)) return PHONE_ICON;
   let host;
   try {
     const url = new URL(link.value);
@@ -101,6 +101,22 @@ function render() {
   renderSuggestions();
 }
 
+function iconElement(icon) {
+  const picture = document.createElement("picture");
+  if (icon.dark) {
+    const source = document.createElement("source");
+    source.srcset = icon.dark;
+    source.media = "(prefers-color-scheme: dark)";
+    picture.append(source);
+  }
+  const img = document.createElement("img");
+  img.className = "key-logo";
+  img.src = icon.light;
+  img.alt = "";
+  picture.append(img);
+  return picture;
+}
+
 function viewRow(link, i) {
   const icon = iconFor(link);
   const iconHtml = icon
@@ -114,12 +130,15 @@ function viewRow(link, i) {
   li.tabIndex = 0;
   li.title = `Copy ${link.value}`;
   li.innerHTML = `
-    <span class="key">${iconHtml || (i < 9 ? i + 1 : "")}</span>
+    <span class="key"></span>
     <span class="text">
       <div class="label"></div>
       <div class="value"></div>
     </span>
     <span class="copied">Copied</span>`;
+  const key = li.querySelector(".key");
+  if (icon) key.append(iconElement(icon));
+  else if (i < 9) key.textContent = i + 1;
   li.querySelector(".label").textContent = link.label || link.value;
   li.querySelector(".value").textContent = link.label ? link.value : "";
   li.addEventListener("click", () => copy(link, li));
