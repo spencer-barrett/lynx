@@ -2,7 +2,7 @@
 
 A small browser extension that keeps your LinkedIn, GitHub, portfolio, and other links one click away, for job applications and sign-up forms.
 
-**What sets it apart:** Lynx can fill a whole job application's link fields in one keystroke, but it only touches a page when you ask it to. Autofill extensions usually need permission to read every site you visit. Lynx asks for none.
+Press one shortcut and Lynx fills in every link field on your job application. It only touches the page when you ask, so unlike most autofill extensions, it doesn’t need permission to read the sites you visit. (You can optionally allow a few job-board sites, for forms embedded from them.)
 
 ![Lynx filling a job application: Alt+Shift+F fills email and phone, Fill this form adds LinkedIn, portfolio, and GitHub, and clicking a saved project link copies it to paste into a question Lynx can't fill](docs/demo.webp)
 
@@ -14,12 +14,12 @@ A small browser extension that keeps your LinkedIn, GitHub, portfolio, and other
 
 ## How to use it
 
-- **Fill the form:** on an application page, press `Alt+Shift+F` (or click **Fill this form** in the popup). Lynx finds the LinkedIn, GitHub, portfolio, email, and similar fields and fills the empty ones. Each filled field glows briefly so you can check it. Fields that already have something in them are left alone.
-- **Copy a link:** click the toolbar icon, then click a link. It's on your clipboard, ready to paste.
-- **Keyboard:** open the popup with `Alt+Shift+L`, then press `1`–`9` to copy that link.
-- **Copy all:** puts every link on your clipboard as a `Label: link` list, for "anything else to share?" text boxes.
-- **Insert directly:** right-click any text field, choose **Insert link from Lynx**, and pick a link. It goes straight into the field.
-- **Manage links:** add links at the bottom of the popup (the quick buttons fill in LinkedIn, GitHub, and so on). Click **Edit** to rename, reorder, or delete them.
+- On an application page, press `Alt+Shift+F` (or click **Fill this form** in the popup). Lynx finds the LinkedIn, GitHub, portfolio, email, and similar fields and fills the empty ones. Each filled field glows briefly so you can check it, and fields that already have something in them are left alone.
+- To copy a link, click the toolbar icon and then the link. It's on your clipboard, ready to paste.
+- From the keyboard, open the popup with `Alt+Shift+L` and press `1` to `9` to copy that link.
+- **Copy all** puts every link on your clipboard as a `Label: link` list, for "anything else to share?" text boxes.
+- To insert a link directly, right-click any text field, choose **Insert link from Lynx**, and pick a link.
+- Add links at the bottom of the popup (the quick buttons fill in LinkedIn, GitHub, and so on). Click **Edit** to rename, reorder, or delete them.
 
 Your links are kept in `chrome.storage.sync`, so they follow your browser profile across devices. Nothing is sent anywhere else. See the [privacy policy](PRIVACY.md).
 
@@ -38,7 +38,7 @@ Your links are kept in `chrome.storage.sync`, so they follow your browser profil
 
 A temporary add-on is removed when Firefox closes. Firefox 121 or newer is required.
 
-There's no build step: it's plain HTML, CSS, and JavaScript.
+There's no build step. It's plain HTML, CSS, and JavaScript.
 
 ## Permissions
 
@@ -51,7 +51,7 @@ There's no build step: it's plain HTML, CSS, and JavaScript.
 
 Lynx never runs on a page in the background and doesn't request access to any site.
 
-**Embedded forms:** some company career pages embed the application form from a job-board site such as Greenhouse, Lever, or Ashby. Lynx can't reach into those embeds by default. If **Fill this form** finds an embed, the popup offers **Allow job boards**. You can also turn it on from the link at the bottom of the popup. This grants access to a short list of job-board sites only (see `optional_host_permissions` in `src/manifest.json`), and Lynx still only acts when you ask it to.
+Some company career pages embed the application form from a job-board site such as Greenhouse, Lever, or Ashby, and Lynx can't reach into those embeds by default. If **Fill this form** finds one, the popup offers **Allow job boards**, which you can also turn on from the link at the bottom of the popup. It grants access to a short list of job-board sites only (see `optional_host_permissions` in `src/manifest.json`), and Lynx still only acts when you ask it to.
 
 ## Files
 
@@ -63,20 +63,20 @@ The extension itself lives in `src/`:
 - `src/background.js`: the right-click menu, the fill shortcut, and field insertion
 - `src/icons/`: the extension's icons and the logos shown next to each link (see Credits)
 
-Everything else is about the project:
+The rest of the repo:
 
 - `docs/`: the demo and screenshots above
 - `PRIVACY.md`: the privacy policy
 
 ## Credits
 
-**Icons**
+### Icons
 
-- Email and phone icons: [Lucide](https://lucide.dev), [ISC License](https://lucide.dev/license). Copyright (c) Lucide Contributors 2022; portions copyright (c) Cole Bemis 2013–2022 as part of Feather (MIT).
+- Email and phone icons: [Lucide](https://lucide.dev), [ISC License](https://lucide.dev/license). Copyright (c) Lucide Contributors 2022; portions copyright (c) Cole Bemis 2013-2022 as part of Feather (MIT).
 - X icon by [Icons8](https://icons8.com).
-- Portfolio icon and the Lynx extension icons were made for this project.
+- The portfolio icon and the Lynx extension icons were made for this project.
 
-**Trademarks**
+### Trademarks
 
 LinkedIn, GitHub, and X logos are trademarks of their respective owners and are used only to label links to those sites. Lynx isn't affiliated with or endorsed by LinkedIn, GitHub, or X.
 
