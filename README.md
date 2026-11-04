@@ -21,20 +21,20 @@ A small browser extension that keeps your LinkedIn, GitHub, portfolio, and other
 - **Insert directly:** right-click any text field, choose **Insert link from Lynx**, and pick a link. It goes straight into the field.
 - **Manage links:** add links at the bottom of the popup (the quick buttons fill in LinkedIn, GitHub, and so on). Click **Edit** to rename, reorder, or delete them.
 
-Your links are kept in `chrome.storage.sync`, so they follow your browser profile across devices. Nothing is sent anywhere else.
+Your links are kept in `chrome.storage.sync`, so they follow your browser profile across devices. Nothing is sent anywhere else. See the [privacy policy](PRIVACY.md).
 
 ## Install (developer mode)
 
 1. Clone this repo.
 2. Open `chrome://extensions` (or `edge://extensions`, `brave://extensions`).
 3. Turn on **Developer mode**.
-4. Click **Load unpacked** and select this folder.
+4. Click **Load unpacked** and select the `src` folder.
 5. Pin Lynx to the toolbar.
 
 ### Firefox
 
 1. Open `about:debugging#/runtime/this-firefox`.
-2. Click **Load Temporary Add-on…** and select `manifest.json` in this folder.
+2. Click **Load Temporary Add-on…** and select `src/manifest.json`.
 
 A temporary add-on is removed when Firefox closes. Firefox 121 or newer is required.
 
@@ -51,16 +51,22 @@ There's no build step: it's plain HTML, CSS, and JavaScript.
 
 Lynx never runs on a page in the background and doesn't request access to any site.
 
-**Embedded forms:** some company career pages embed the application form from a job-board site such as Greenhouse, Lever, or Ashby. Lynx can't reach into those embeds by default. If **Fill this form** finds an embed, the popup offers **Allow job boards**. You can also turn it on from the link at the bottom of the popup. This grants access to a short list of job-board sites only (see `optional_host_permissions` in `manifest.json`), and Lynx still only acts when you ask it to.
+**Embedded forms:** some company career pages embed the application form from a job-board site such as Greenhouse, Lever, or Ashby. Lynx can't reach into those embeds by default. If **Fill this form** finds an embed, the popup offers **Allow job boards**. You can also turn it on from the link at the bottom of the popup. This grants access to a short list of job-board sites only (see `optional_host_permissions` in `src/manifest.json`), and Lynx still only acts when you ask it to.
 
 ## Files
 
-- `manifest.json`: extension config (Manifest V3)
-- `popup.html` / `popup.css` / `popup.js`: the toolbar popup
-- `fill.js`: form-field matching, shared by the popup and background script
-- `background.js`: the right-click menu, the fill shortcut, and field insertion
+The extension itself lives in `src/`:
+
+- `src/manifest.json`: extension config (Manifest V3)
+- `src/popup.html` / `src/popup.css` / `src/popup.js`: the toolbar popup
+- `src/fill.js`: form-field matching, shared by the popup and background script
+- `src/background.js`: the right-click menu, the fill shortcut, and field insertion
+- `src/icons/`: the extension's icons and the logos shown next to each link (see Credits)
+
+Everything else is about the project:
+
 - `docs/`: the demo and screenshots above
-- `icons/`: the extension's icons and the logos shown next to each link (see Credits)
+- `PRIVACY.md`: the privacy policy
 
 ## Credits
 
