@@ -58,9 +58,12 @@
     }
   },
   "browser_specific_settings": {
-    "gecko": {
-      "id": "lynx@spencer-barrett",
-      "strict_min_version": "121.0"
+  "gecko": {
+    "id": "lynx@spencer-barrett",
+    "strict_min_version": "121.0",
+    "data_collection_permissions": {
+      "required": ["none"]
     }
   }
+}
 }
