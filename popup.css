@@ -49,14 +49,18 @@ header {
 
 .header-container{
   display: flex;
-  flex-direction: row;
-  gap: 12px;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-container img{
+  height: 24px;
 }
 
 
 h1 {
   margin: 0;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 650;
 }
 
