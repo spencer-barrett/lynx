@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    .fg { fill: #000; }
+    @media (prefers-color-scheme: dark) { .fg { fill: #fff; } }
+  </style>
+  <mask id="cutouts">
+    <rect width="24" height="24" fill="#fff"/>
+    <rect x="2" y="7.5" width="20" height="1.5" fill="#000"/>
+    <circle cx="5.25" cy="5.25" r="1" fill="#000"/>
+    <circle cx="8.25" cy="5.25" r="1" fill="#000"/>
+    <circle cx="12" cy="12.6" r="2.1" fill="#000"/>
+    <path d="M7.6 19.2a4.4 4.4 0 0 1 8.8 0z" fill="#000"/>
+  </mask>
+  <rect class="fg" x="2" y="3" width="20" height="18" rx="3" mask="url(#cutouts)"/>
+</svg>
