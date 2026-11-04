@@ -3,6 +3,7 @@
   "name": "Lynx",
   "version": "0.1.0",
   "description": "Keep your social and portfolio links one click away for job applications and other forms.",
+  "homepage_url": "https://github.com/spencer-barrett/lynx",
   "permissions": [
     "storage",
     "contextMenus",
