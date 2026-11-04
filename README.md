@@ -67,6 +67,11 @@ The rest of the repo:
 
 - `docs/`: the demo and screenshots above
 - `PRIVACY.md`: the privacy policy
+- `LICENSE`: the MIT license
+
+## License
+
+The code is released under the [MIT License](LICENSE). Third-party icons and logos keep their own licenses and terms (see Credits).
 
 ## Credits
 
