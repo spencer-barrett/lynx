@@ -52,15 +52,17 @@ function fillForm(links) {
     }
     // Recognise well-known sites from the URL, so a link labelled
     // "My profile" pointing at linkedin.com still matches LinkedIn fields.
-    // Only known sites count: a portfolio on jane.github.io must not
-    // compete with the real GitHub link.
+    // Only profile URLs on known sites count: a portfolio on jane.github.io
+    // or a repo at github.com/jane/project must not compete with the real
+    // GitHub profile link.
     try {
-      const host = new URL(link.value).hostname.replace(/^www\./, "");
+      const url = new URL(link.value);
+      const host = url.hostname.replace(/^www\./, "");
       const site = host.split(".").slice(-2, -1)[0];
       // linkedin.com or uk.linkedin.com count; jane.github.io doesn't.
       const parts = host.split(".");
       const isProfileHost = parts.length === 2 || (parts.length === 3 && parts[0].length === 2);
-      if (ALIASES[site] && isProfileHost) {
+      if (ALIASES[site] && isProfileHost && isProfilePath(site, url.pathname)) {
         words.add(site);
         for (const k of ALIASES[site]) words.add(k);
       }
@@ -68,6 +70,15 @@ function fillForm(links) {
       if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(link.value)) ALIASES.email.forEach((k) => words.add(k));
     }
     return [...words].filter(Boolean);
+  }
+
+  // Does this URL path point at a person's profile rather than a repo,
+  // post, or other page? github.com/jane yes, github.com/jane/project no.
+  function isProfilePath(site, pathname) {
+    const segments = pathname.split("/").filter(Boolean);
+    if (site === "linkedin") return segments[0] === "in" && segments.length <= 2;
+    if (site === "stackoverflow") return segments[0] === "users";
+    return segments.length <= 1;
   }
 
   function labelText(el) {
