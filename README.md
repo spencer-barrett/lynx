@@ -1,7 +1,7 @@
 # Lynx
 
 [![Chrome Web Store](https://img.shields.io/badge/chrome_web_store-published-green?style=for-the-badge&logo=chromewebstore&logoColor=white)](https://chromewebstore.google.com/detail/lynx/cfkmhbbbbhkamdnmlelogfkmleamkicf)
-[![Firefox Add-Ons](https://img.shields.io/badge/firefox_add--ons-awaiting_review-yellow?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/lynx-job-links/)
+[![Firefox Add-Ons](https://img.shields.io/badge/firefox_add--ons-published-green?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/lynx-job-links/)
 ![Static Badge](https://img.shields.io/badge/version-0.1.1-blue?style=for-the-badge)
 
 A small browser extension that keeps your LinkedIn, GitHub, portfolio, and other links one click away, for job applications and sign-up forms.
