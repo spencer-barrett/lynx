@@ -19,9 +19,9 @@ Press one shortcut and Lynx fills in every link field on your job application. I
 
 ## How to use it
 
-- On an application page, press `Alt+Shift+F` (or click **Fill this form** in the popup). Lynx finds the LinkedIn, GitHub, portfolio, email, and similar fields and fills the empty ones. Each filled field glows briefly so you can check it, and fields that already have something in them are left alone.
+- On an application page, press `Alt+Shift+F`, or `Control+Shift+F` on Mac (or click **Fill this form** in the popup). Lynx finds the LinkedIn, GitHub, portfolio, email, and similar fields and fills the empty ones. Each filled field glows briefly so you can check it, and fields that already have something in them are left alone.
 - To copy a link, click the toolbar icon and then the link. It's on your clipboard, ready to paste.
-- From the keyboard, open the popup with `Alt+Shift+L` and press `1` to `9` to copy that link.
+- From the keyboard, open the popup with `Alt+Shift+L` (`Control+Shift+L` on Mac) and press `1` to `9` to copy that link.
 - **Copy all** puts every link on your clipboard as a `Label: link` list, for "anything else to share?" text boxes.
 - To insert a link directly, right-click any text field, choose **Insert link from Lynx**, and pick a link.
 - Add links at the bottom of the popup (the quick buttons fill in LinkedIn, GitHub, and so on). Click **Edit** to rename, reorder, or delete them.

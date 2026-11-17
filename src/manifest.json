@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Lynx",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Keep your social and portfolio links one click away for job applications and other forms.",
   "homepage_url": "https://github.com/spencer-barrett/lynx",
   "permissions": ["storage", "contextMenus", "activeTab", "scripting"],
@@ -38,13 +38,15 @@
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "default": "Alt+Shift+L"
+        "default": "Alt+Shift+L",
+        "mac": "MacCtrl+Shift+L"
       },
       "description": "Open Lynx"
     },
     "fill-form": {
       "suggested_key": {
-        "default": "Alt+Shift+F"
+        "default": "Alt+Shift+F",
+        "mac": "MacCtrl+Shift+F"
       },
       "description": "Fill link fields on this page"
     }

@@ -209,6 +209,22 @@ button:disabled {
   cursor: default;
 }
 
+.notice {
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.notice p {
+  margin: 0 0 8px;
+}
+
+.notice-actions {
+  display: flex;
+  gap: 6px;
+}
+
 #board-prompt {
   margin-top: 8px;
   padding: 8px 10px;

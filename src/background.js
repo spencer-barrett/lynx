@@ -111,7 +111,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
   if (area === "sync" && changes.links) rebuildMenus();
 });
 
-// Alt+Shift+F: fill every matching field on the page. The shortcut grants
+// Alt+Shift+F (Control+Shift+F on Mac): fill every matching field on the page. The shortcut grants
 // activeTab for this tab, so no site permissions are needed.
 chrome.commands.onCommand.addListener(async (command, tab) => {
   if (command !== "fill-form") return;

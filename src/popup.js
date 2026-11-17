@@ -309,5 +309,65 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// Show the fill shortcut the user actually has: it's Control+Shift+F on
+// Mac (Option+Shift+F types "Ï" there), and people can change it in the
+// browser's shortcut settings.
+function showFillShortcut() {
+  chrome.commands.getAll((commands) => {
+    const fill = commands.find((c) => c.name === "fill-form");
+    const kbd = $("#fill-shortcut");
+    if (fill?.shortcut) {
+      kbd.textContent = fill.shortcut;
+      $("#fill").title = `Fill matching fields on this page (${fill.shortcut})`;
+    } else {
+      kbd.textContent = "no shortcut set";
+      $("#fill").title = "Fill matching fields on this page";
+    }
+  });
+}
+
+// ----- One-time Mac shortcut notice -----
+// Lynx 0.1.0 and 0.1.1 used Alt+Shift+F on every platform. On Mac that's
+// Option+Shift+F, which types "Ï" in text fields. New installs get
+// Control+Shift+F, but browsers never change an existing shortcut on update,
+// so earlier Mac users keep the old one. Offer to change it once.
+
+const MAC_NOTICE_KEY = "macShortcutNoticeDismissed";
+
+async function checkMacShortcut() {
+  const { os } = await chrome.runtime.getPlatformInfo();
+  if (os !== "mac") return;
+  const stored = await chrome.storage.local.get(MAC_NOTICE_KEY);
+  if (stored[MAC_NOTICE_KEY]) return;
+  const commands = await chrome.commands.getAll();
+  const fill = commands.find((c) => c.name === "fill-form");
+  // Chrome shows the Option key as ⌥; Firefox shows it as Alt.
+  $("#mac-notice").hidden = !(fill?.shortcut && /⌥|Alt/.test(fill.shortcut));
+}
+
+$("#mac-fix").addEventListener("click", async () => {
+  // Firefox lets an extension change its own shortcuts; Chrome doesn't.
+  if (typeof chrome.commands.update === "function") {
+    try {
+      await chrome.commands.update({ name: "fill-form", shortcut: "MacCtrl+Shift+F" });
+      await chrome.commands.update({ name: "_execute_action", shortcut: "MacCtrl+Shift+L" });
+      $("#mac-notice").hidden = true;
+      showFillShortcut();
+      toast("Shortcut changed to Control+Shift+F");
+    } catch {
+      toast("Change it in Add-ons, then Manage Extension Shortcuts");
+    }
+    return;
+  }
+  chrome.tabs.create({ url: "chrome://extensions/shortcuts" });
+});
+
+$("#mac-dismiss").addEventListener("click", async () => {
+  $("#mac-notice").hidden = true;
+  await chrome.storage.local.set({ [MAC_NOTICE_KEY]: true });
+});
+
 load();
 updateBoardLink();
+showFillShortcut();
+checkMacShortcut();
